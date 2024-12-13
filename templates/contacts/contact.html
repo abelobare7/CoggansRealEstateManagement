@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pt-5 min-vh-100">
+    <h1 class="text-center fw-bold mb-5">
+        Get in touch
+    </h1>
+    <p class="text-center fs-4">
+        On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by
+        the
+        charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble.
+    </p>
+    <div class="row border rounded-3 border-1 my-5 p-5 pink">
+        <div class="col-md-6 border-end ">
+            <form action="{% url 'contact' %}" method="post">
+                {% csrf_token %}
+                <h2 class="fw-bold mb-3">Send a message</h2>
+                <input type="text" class="form-control form-control-lg mb-3" placeholder="Full Name" name="name">
+                <input type="text" class="form-control form-control-lg mb-3" placeholder="Email Address" name="email">
+                <input type="text" class="form-control form-control-lg mb-3" placeholder="Phone Number"
+                    name="phone_number">
+                <input type="text" class="form-control form-control-lg mb-3" placeholder="Subject" name="subject">
+                <textarea name="message" class="form-control form-control-lg mb-3"
+                    placeholder="Enter Your Message Here..."></textarea>
+                <input type="submit" class="form-control form-control-lg btn btn-dark mb-3" value="Send Message">
+            </form>
+
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="fw-bold">
+                        Office Address
+                    </h2>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Coggans Building 5th Flr, Moi Avenue, Nairobi,
+                        
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i> info@coggans.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone-alt"></i> (254) 115 742 073
+                    </p>
+                </div>
+                <div class="col-md-12">
+                    <h2 class="fw-bold">Socials</h2>
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-floating fs-5">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-floating fs-5">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-floatin fs-5">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="btn btn-floating fs-5">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

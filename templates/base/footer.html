@@ -1,0 +1,63 @@
+{% block footer %}
+<footer class="bg-dark text-white pt-5 bg-gradient">
+    <div class="container text-md-left">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center text-md-start">
+                <h1 class="font-weight-bold text-primary">Coggans RealEstate</h1>
+                <p>Explore the world of real estate and discover your perfect property. Whether you're searching for a
+                    cozy home, a commercial space, or an investment opportunity, our team is here to assist you.</p>
+            </div>
+            <div class="col-md-3 text-center text-md-start">
+                <h1 class="text-primary">Quick Links</h1>
+                <ul class="list-unstyled">
+                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                            href="{% url 'home'%}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                            href="{% url 'listings'%}">Properties</a></li>
+                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                            href="{% url 'landlord-dashboard'%}">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                            href="{% url 'home'%}">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 text-center text-md-start">
+                <h1 class="text-primary">Contact Us</h1>
+                <p><i class="fas fa-home me-3"></i>Moi Ave., Nairobi</p>
+                <p><i class="fas fa-envelope me-3"></i>abelgithub@gmail.com</p>
+                <p><i class="fas fa-phone me-3"></i>0115742073</p>
+            </div>
+        </div>
+        <hr class="container" />
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start order-md-last">
+                <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-floating text-white fs-5">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-floating text-white fs-5">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-floating text-white fs-5">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#" class="btn btn-floating text-white fs-5">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center text-md-start order-md-first">
+                <p>&copy; 2024 Coggans RealEstate. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% endblock footer %}

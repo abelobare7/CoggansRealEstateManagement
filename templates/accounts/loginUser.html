@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content%}
+{% load crispy_forms_tags %}
+
+<div class="container min-vh-100">
+<form method="POST">
+    {% csrf_token %}
+    <div class="row justify-content-end align-items-center">
+        <div class="col-12">
+            <h1 class="text-center m-5">Login User</h1>
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center">Coggans Real Estate</h1>
+            <p class="text-center">Login in to save your searches</p>
+        </div>
+        <div class="col-md-6">
+            {{ form|crispy }}
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-dark form-control" "submit">login</button>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <p>New User? Sign Up <a href="{% url 'register' %}">Here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+{% endblock content %}

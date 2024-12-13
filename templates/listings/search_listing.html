@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="get" action="{% url 'search_listings' %}">
+                <h1>Search Listings</h1>
+                {{ form|crispy }}
+                <button class="btn btn-dark form-control mb-5" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <h1 class="fw-bold">
+        Search Results
+    </h1>
+    <div class="row">
+        {% for listing in listings %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHJlYWwlMjBlc3RhdGUlMjBwaG90b3N8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{listing.title}}</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-bed"></i> {{ listing.bedrooms }} Beds</li>
+                        <li><i class="fa fa-bath"></i> {{ listing.bathrooms }} Baths</li>
+                        <li><i class="fa fa-area"></i> {{ listing.square_feet }} sqft</li>
+                        <li><i class="fa fa-cogs"></i> Family</li>
+                    </ul>
+                    <p class="card-text">Kshs {{ listing.price }}</p>
+                    <a href="{% url 'listing-details' id=listing.id %}" class="btn btn-dark">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

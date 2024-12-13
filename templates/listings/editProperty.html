@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+{{ load_crispy_forms }}
+<form method="post">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'landlord-dashboard' %}" class="btn btn-secondary">Back to dashboard</a>
+</form>
+{% endblock content %}

@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+<!-- navbar -->
+{% include "base/navbar.html" %}
+<!-- end navbar -->
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<div class="container-fluid hero-section mb-5">
+    <div class="row mb-4">
+        <div class="col-md-7 d-md-flex order-md-1">
+            <img src="{% static 'images/rent-3.jpg' %}"
+                class="img-fluid rounded" alt="image">
+        </div>
+        <div class="col-md-5 order-md-0">
+            <h1 class="fw-bold fs-1 my-5">Find a perfect property
+                Where you'll love to live
+            </h1>
+            <p>
+                We help businesses customize, automate, and scale up their ad production and delivery.
+            </p>
+            <div class="row bg-white m-4 rounded-3">
+                <div class="col-12 col-md-10 mt-5 mb-5 d-md-flex justify-content-between">
+                    <a class="btn btn-dark px-5 fs-5 mb-3 mb-md-0" href="{% url 'buy_listings' %}">Buy</a>
+                    <a class="btn btn-dark px-5 fs-5 mb-3 mb-md-0" href="{% url 'rent_listings' %}">Rent</a>
+                    <a class="btn btn-dark px-5 fs-5 mb-3 mb-md-0" href="{% url 'listings' %}">Sell</a>
+                </div>
+
+                <div class="col-12 col-md-10 form-group mb-5">
+                    <form action="{% url 'search_listings' %}" method="GET">
+                        {% csrf_token %}
+                        <input type="text" name="location" class="form-control mb-3 mb-md-5 form-control-md-lg"
+                            placeholder="Location">
+                        <input type="text" name="type" class="form-control mb-3 mb-md-5 form-control-md-lg"
+                            placeholder="Type">
+                        <select name="property_type" class="form-control mb-3 mb-md-5 form-control-lg" id="sel1">
+                            {% for type in types %}
+                            <option value="{{ type.0 }}">{{ type.1 }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="form-control btn-dark form-control-lg">Search</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+<div class="container my-5">
+    <div class="row gx-5 rounded-3">
+        <div class="col-md-6 pink py-5 rounded-3">
+            <h1 class="fw-bold pb-3">
+                Simple & easy way to find your dream Appointment
+            </h1>
+            <p class="pb-3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+            <a class="btn btn-dark fw-bold mt-5" href="{% url 'search_listings' %}">
+               Get Started
+            </a>
+        </div>
+        <div class="col-md-6">
+            <div class="row gy-3">
+                <div class="col-md-6 pink d-flex flex-column justify-content-between py-4">
+                    <i class="fa fa-search fs-3" aria-hidden="true"></i>
+                    <h1 class="mt-3">
+                        Search your location
+                    </h1>
+                </div>
+                <div class="col-md-6 pink d-flex flex-column justify-content-between py-4">
+                    <i class="fa fa-save fs-3" aria-hidden="true"></i>
+                    <h1 class="mt-3">
+                        Save Your Searches
+                    </h1>
+                </div>
+                <div class="col-md-6 pink d-flex flex-column justify-content-between py-4">
+                    <i class="fa fa-book fs-3" aria-hidden="true"></i>
+                    <h1 class="mt-3">
+                        Book An Appointment
+                    </h1>
+                </div>
+                <div class="col-md-6 pink rounded-3 d-flex flex-column justify-content-between py-4">
+                    <i class="fa fa-home fs-3" aria-hidden="true"></i>
+                    <h1 class="mt-3">
+                        Get Your Dream Home
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pink my-5 py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <i class="fa fa-dollar fs-3" aria-hidden="true"></i>
+                <h1 class="fw-bold">$15.4M</h1>
+                <h3>
+                    Owned from
+                    Properties transactions
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-dollar fs-3" aria-hidden="true"></i>
+                <h1 class="fw-bold">2000+</h1>
+                <h3>
+                    daily Completed Transactions
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-dollar fs-3" aria-hidden="true"></i>
+                <h1 class="fw-bold">600+</h1>
+                <h3>
+                    Regular Clients
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-book fs-3" aria-hidden="true"></i>
+                <h1 class="fw-bold">24k+</h1>
+                <h3>
+                    Properties for Buy & sell Successfully Sold
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <div class="row d-sm-flex align-items-center mb-5">
+        <div class="col-sm-6">
+            <h1 class="fw-bold">Popular Properties</h1>
+        </div>
+        <div class="col-md-6 d-flex justify-content-md-end justify-content-sm-center">
+            <h3>
+                <a href="{% url 'listings' %}" class="text-decoration-none">
+                    Explore All
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+    <div class="row g-5">
+        {% for listing in listings %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/sale-3.jpg' %}"
+                    class="card-img-top" alt="..." height="336px" width="224px">
+                <div class="card-body">
+                    <h3 class="card-title">{{listing.title}}</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-bed"></i> {{ listing.bedrooms }} Beds</li>
+                        <li><i class="fa fa-bath"></i> {{ listing.bathrooms }} Baths</li>
+                        <li><i class="fa fa-home"></i> {{ listing.square_feet }} sqft</li>
+                        <li><i class="fa fa-home"></i>{{listing.property_type}} </li>
+                    </ul>
+                    <p class="card-text">Kshs {{ listing.price }}</p>
+                    <a href="{% url 'listing-details' id=listing.id %}" class="btn btn-dark">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<div class="container-fluid pink py-5 mt-5">
+    <div class="container">
+        <div class="row pb-5">
+            <div class="col-md-6">
+                <h1 class="fw-bold text-sm-center text-md-start">
+                    Simple & easy way to find your dream Appointment
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sint minima sed laudantium
+                    aspernatur. Atque reprehenderit asperiores consequatur repudiandae assumenda eos sunt fuga. Qui!
+                </p>
+                <a href="register" class="btn btn-dark rounded-4 mb-sm-4 ">Get Started</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'images/sale-3.jpg' %}"
+                    class="card-img-top" alt="..." height="336px" width="224px">
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-md-6">
+                <img src="{% static 'images/rent-10.jpg' %}"
+                    class="card-img-top" alt="..." height="336px" width="224px">
+            </div>
+            <div class="col-md-6">
+                <h1 class="fw-bold">
+                    Simple & easy way to find your dream Appointment
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium sint minima sed laudantium
+                    aspernatur. Atque reprehenderit asperiores consequatur repudiandae assumenda eos sunt fuga. Qui!
+                </p>
+                <a href="register" class="btn btn-dark rounded-4">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-dark">
+    <div class="container pink rounded p-5 my-5 text-center">
+        <h1 class="fw-bold">For Information on new Properties</h1>
+        <p class="">Sign up to our newsletter to get notified on new property listings</p>
+        <div class="row p-4 align-items-center justify-content-evenly">
+            <div class="col-md-6">
+                <input type="text" placeholder="Enter your email" class="form-control form-control-lg">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn-dark btn form-control-lg mt-sm-4">Subscribe</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "contacts/contact.html" %}
+
+{% endblock content %}

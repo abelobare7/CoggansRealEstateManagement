@@ -1,0 +1,80 @@
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row fw-bold">
+        <div class="col-md-12">
+            <h1 class="fw-bold">
+                Welcome, {{user.first_name}}
+            </h1>
+        </div>
+        <div class="col-md-6 ">
+            <a class="nav-link" href="{% url 'properties' %}">
+                <div class="card bg-dark text-dark">
+                    <img src="{% static 'images/rent-10.jpg' %}"
+                        class="card-img w-100" alt="...">
+                    <div class="card-img-overlay">
+                        <h1 class="card-title">Total Listing</h1>
+                        <h2 class="card-text">Your total number of listings</>
+                            <h2 class="card-text">{{total_listings}} </>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a class="nav-link" href="{% url 'reqs' %}">
+            <div class="card bg-dark text-dark">
+                <img src="{% static 'images/rent-6.jpg' %}"
+                    class="card-img w-100" alt="...">
+                <div class="card-img-overlay">
+                    <h1 class="card-title">View Requests</h1>
+                    <h2 class="card-text">Your total number of requests</h2>
+                    <h2 class="card-text">{{total_views}} </h2>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+
+    <h2>Listing Management</h2>
+    <div class="card-deck">
+        {% for listing in listings %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ listing.title }}</h5>
+                <p class="card-text">{{ listing.description }}</p>
+                <p class="card-text">
+                    {% if listing.is_available %}
+                    Availability: Available
+                    {% else %}
+                    Availability: Sold
+                    {% endif %}
+                </p>
+                <div class="btn-group">
+                    <a href="{% url 'edit-listing' id=listing.id %}" class="btn btn-info m-4">Edit</a>
+                    <a href="{% url 'listing-details' id=listing.id %}" class="btn btn-info m-4">View Property</a>
+                    <a href="{% url 'delete-listing' id=listing.id %}" class="btn btn-danger m-4">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'generate-report' %}" class="btn btn-dark">Download Listings Report</a>
+
+    <a class="btn btn-info" href="{% url 'add-listing' %}">Add a new property</a>
+
+</div>
+
+<div class="container">
+    <h1>Viewing Requests</h1>
+
+    {% for inq in inqs %}
+    <h2>User: {{ inq.user.first_name }} {{ inq.user.last_name }}</h2>
+    <p>Timestamp: {{ inq.timestamp }}</p>
+    <p>Message: {{ inq.message }}</p>
+    <hr>
+    {% empty %}
+    <p>No viewing requests found.</p>
+    {% endfor %}
+</div>
+{% endblock content %}
